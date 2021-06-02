@@ -1,7 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ApiModuleConfig } from './models/config.model';
+import { GOOGLE_API_URL } from './tokens/api-url.token';
 
-@NgModule({
-  imports: [CommonModule],
-})
-export class ApiModule {}
+@NgModule()
+export class ApiModule {
+  static forRoot({
+    baseUrl,
+  }: ApiModuleConfig = {}): ModuleWithProviders<ApiModule> {
+    return {
+      ngModule: ApiModule,
+      providers: [
+        {
+          provide: GOOGLE_API_URL,
+          useValue: baseUrl || 'https://www.googleapis.com',
+        },
+      ],
+    };
+  }
+}
