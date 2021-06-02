@@ -25,6 +25,9 @@
     "search-e2e": {
       "tags": [],
       "implicitDependencies": ["search"]
+    },
+    "api": {
+      "tags": []
     }
   }
 }
