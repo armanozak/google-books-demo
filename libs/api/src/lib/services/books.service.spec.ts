@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import {
   HttpClientTestingModule,
   HttpTestingController,
@@ -9,7 +8,6 @@ import { bookSearchResponse, bookSummaryResponse } from '../test/books.data';
 import { BooksService } from './books.service';
 
 describe('BooksService', () => {
-  let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let service: BooksService;
 
@@ -18,7 +16,6 @@ describe('BooksService', () => {
       imports: [HttpClientTestingModule, ApiModule.forRoot()],
     });
 
-    httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
     service = TestBed.inject(BooksService);
   });
@@ -65,6 +62,7 @@ describe('BooksService', () => {
     'should search books and return a stream of summaries %#',
     (
       { expectedStartIndex, expectedMaxResults, expectedOrderBy, ...input },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       done: any
     ) => {
       service.searchVolumes(input).subscribe((response) => {
