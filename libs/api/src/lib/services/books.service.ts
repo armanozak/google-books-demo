@@ -27,7 +27,7 @@ export class BooksService {
   searchVolumes({
     q,
     startIndex = 0,
-    maxResults = 40,
+    maxResults = 10,
     orderBy = 'relevance',
   }: BookSearchParams): Observable<BookSummaryResponse> {
     if (!q) {

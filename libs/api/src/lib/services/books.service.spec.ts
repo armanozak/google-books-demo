@@ -34,10 +34,10 @@ describe('BooksService', () => {
   const searchCases = [
     {
       q: 'foo',
-      startIndex: 10,
-      expectedStartIndex: 10,
-      maxResults: 10,
-      expectedMaxResults: 10,
+      startIndex: 40,
+      expectedStartIndex: 40,
+      maxResults: 40,
+      expectedMaxResults: 40,
       orderBy: 'relevance',
       expectedOrderBy: 'relevance',
     },
@@ -55,7 +55,7 @@ describe('BooksService', () => {
       startIndex: undefined,
       expectedStartIndex: 0,
       maxResults: undefined,
-      expectedMaxResults: 40,
+      expectedMaxResults: 10,
       orderBy: undefined,
       expectedOrderBy: 'relevance',
     },
