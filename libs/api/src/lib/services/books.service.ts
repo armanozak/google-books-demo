@@ -28,6 +28,7 @@ export class BooksService {
     q,
     startIndex = 0,
     maxResults = 40,
+    orderBy = 'relevance',
   }: BookSearchParams): Observable<BookSummaryResponse> {
     if (!q) {
       return of(new BookSummaryResponse());
@@ -39,6 +40,7 @@ export class BooksService {
           q,
           startIndex,
           maxResults,
+          orderBy,
           fields:
             'totalItems,items(volumeInfo/id,volumeInfo/title,volumeInfo/imageLinks/thumbnail,volumeInfo/authors,volumeInfo/publishedDate)',
           langRestrict: 'en',

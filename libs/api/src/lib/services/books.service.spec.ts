@@ -38,6 +38,8 @@ describe('BooksService', () => {
       expectedStartIndex: 10,
       maxResults: 10,
       expectedMaxResults: 10,
+      orderBy: 'relevance',
+      expectedOrderBy: 'relevance',
     },
     {
       q: 'bar',
@@ -45,6 +47,8 @@ describe('BooksService', () => {
       expectedStartIndex: 50,
       maxResults: 20,
       expectedMaxResults: 20,
+      orderBy: 'newest',
+      expectedOrderBy: 'newest',
     },
     {
       q: 'baz',
@@ -52,12 +56,17 @@ describe('BooksService', () => {
       expectedStartIndex: 0,
       maxResults: undefined,
       expectedMaxResults: 40,
+      orderBy: undefined,
+      expectedOrderBy: 'relevance',
     },
   ];
 
   it.each(searchCases)(
     'should search books and return a stream of summaries %#',
-    ({ expectedStartIndex, expectedMaxResults, ...input }, done: any) => {
+    (
+      { expectedStartIndex, expectedMaxResults, expectedOrderBy, ...input },
+      done: any
+    ) => {
       service.searchVolumes(input).subscribe((response) => {
         expect(response).toEqual(bookSummaryResponse);
         done();
@@ -70,6 +79,7 @@ describe('BooksService', () => {
       expect(req.request.params.get('q')).toBe(input.q);
       expect(req.request.params.get('startIndex')).toBe(expectedStartIndex);
       expect(req.request.params.get('maxResults')).toBe(expectedMaxResults);
+      expect(req.request.params.get('orderBy')).toBe(expectedOrderBy);
 
       req.flush(bookSearchResponse);
     }

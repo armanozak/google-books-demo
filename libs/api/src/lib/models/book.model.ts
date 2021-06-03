@@ -2,8 +2,19 @@ import type { books_v1 } from 'googleapis';
 
 export type BookSearchParams = Pick<
   books_v1.Params$Resource$Volumes$List,
-  'q' | 'startIndex' | 'maxResults'
+  'q' | 'startIndex' | 'maxResults' | 'orderBy'
 >;
+
+export const BOOK_SORT_OPTIONS = [
+  {
+    key: 'Relevance',
+    value: 'relevance',
+  },
+  {
+    key: 'Newest',
+    value: 'newest',
+  },
+];
 
 export type BookSearchResponse = Pick<
   books_v1.Schema$Volumes,
