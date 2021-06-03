@@ -36,7 +36,7 @@
       "projectType": "application",
       "root": "apps/search",
       "sourceRoot": "apps/search/src",
-      "prefix": "google-books",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -152,7 +152,7 @@
       "projectType": "library",
       "root": "libs/api",
       "sourceRoot": "libs/api/src",
-      "prefix": "google-books",
+      "prefix": "app",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",

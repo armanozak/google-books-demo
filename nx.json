@@ -9,7 +9,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "google-books",
+  "npmScope": "app",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
