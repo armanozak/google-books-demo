@@ -44,13 +44,6 @@
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
-    },
-    {
-      "name": "books",
-      "installMode": "lazy",
-      "resources": {
-        "urls": ["https://books.google.com/books/**"]
-      }
     }
   ],
   "dataGroups": [
