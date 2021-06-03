@@ -1,1 +1,70 @@
-<p>books works!</p>
+<section class="search-container" [class.backdrop]="isLoading.value">
+  <header class="search-bar">
+    <mat-form-field>
+      <mat-label>Search books</mat-label>
+      <input
+        matInput
+        placeholder="e.g. Dune"
+        autocomplete="off"
+        [formControl]="qControl"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select [formControl]="orderByControl">
+        <mat-option value="relevance">Sort by relevance</mat-option>
+        <mat-option value="newest">Sort by newest</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </header>
+
+  <ng-container *ngIf="pagination$ | async as pagination">
+    <ng-container *ngIf="pagination.data.length; else empty">
+      <mat-card *ngFor="let book of pagination.data; trackBy: trackByFn">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <img src="{{ book.thumbnail }}" alt="Cover of {{ book.title }}" />
+          </div>
+          <mat-card-title>{{ book.title }}</mat-card-title>
+          <mat-card-subtitle>
+            {{ book.authors.join(', ') }}
+            ({{ book.publishedDate | date: 'yyyy' }})
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+      <footer>
+        <mat-paginator
+          [length]="pagination.total"
+          [pageIndex]="pagination.currentPage - 1"
+          [pageSize]="pagination.perPage"
+          [pageSizeOptions]="[10, 20, 40]"
+          (page)="
+            paginatorRef.setPage($event.pageIndex + 1);
+            setMaxResults($event.pageSize)
+          "
+        >
+        </mat-paginator>
+
+        <div class="alert">
+          You may observe a change in number of records when parameters change.
+          This is because the <code>totalItems</code> value provided by the
+          Google Books API is not reliable. Please check the responses in the
+          network tab of your browser's devtools.
+        </div>
+      </footer>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #empty>
+    <mat-card class="empty">No data available</mat-card>
+  </ng-template>
+</section>
+
+<mat-spinner
+  *ngIf="isLoading.value"
+  color="accent"
+  mode="indeterminate"
+  diameter="80"
+></mat-spinner>
