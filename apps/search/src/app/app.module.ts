@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TOOLBAR_COLOR } from './layouts/common/tokens/toolbar-color.token';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +15,7 @@ import { TOOLBAR_COLOR } from './layouts/common/tokens/toolbar-color.token';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatButtonModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
   ],
   providers: [
     {
