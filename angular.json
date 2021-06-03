@@ -29,6 +29,10 @@
     },
     "@nrwl/angular:component": {
       "style": "scss"
+    },
+    "@ngneat/scam:component": {
+      "inlineStyle": true,
+      "changeDetection": "OnPush"
     }
   },
   "projects": {
