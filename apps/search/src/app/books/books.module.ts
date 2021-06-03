@@ -12,6 +12,7 @@ import { MainLayoutModule } from '../layouts/main-layout/main-layout.component';
 import { BooksRoutingModule } from './books-routing.module';
 import { BooksComponent } from './books.component';
 import { BOOKS_PAGINATOR, createBooksPaginator } from './books.paginator';
+import { PAGE_SIZE_OPTIONS } from './tokens/page-size-options.token';
 
 @NgModule({
   declarations: [BooksComponent],
@@ -33,6 +34,10 @@ import { BOOKS_PAGINATOR, createBooksPaginator } from './books.paginator';
     {
       provide: BOOKS_PAGINATOR,
       useFactory: createBooksPaginator,
+    },
+    {
+      provide: PAGE_SIZE_OPTIONS,
+      useValue: [10, 20, 40],
     },
   ],
 })

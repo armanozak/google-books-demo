@@ -39,7 +39,7 @@
           [length]="pagination.total"
           [pageIndex]="pagination.currentPage - 1"
           [pageSize]="pagination.perPage"
-          [pageSizeOptions]="[10, 20, 40]"
+          [pageSizeOptions]="pageSizeOptions"
           (page)="
             paginatorRef.setPage($event.pageIndex + 1);
             setMaxResults($event.pageSize)

@@ -14,6 +14,7 @@ import { combineLatest, MonoTypeOperatorFunction, Observable } from 'rxjs';
 import { debounceTime, startWith, switchMap, tap } from 'rxjs/operators';
 import { BOOKS_PAGINATOR } from './books.paginator';
 import { BooksService, BooksState } from './state';
+import { PAGE_SIZE_OPTIONS } from './tokens/page-size-options.token';
 
 @Component({
   selector: 'app-books',
@@ -34,7 +35,9 @@ export class BooksComponent implements OnInit, OnDestroy {
   constructor(
     private booksService: BooksService,
     @Inject(OBSERVE) private observe: ObserveFn,
-    @Inject(BOOKS_PAGINATOR) public paginatorRef: PaginatorPlugin<BooksState>
+    @Inject(PAGE_SIZE_OPTIONS) public readonly pageSizeOptions: number[],
+    @Inject(BOOKS_PAGINATOR)
+    public readonly paginatorRef: PaginatorPlugin<BooksState>
   ) {}
 
   ngOnDestroy() {
