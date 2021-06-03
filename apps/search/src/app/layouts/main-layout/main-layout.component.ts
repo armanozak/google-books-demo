@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, NgModule, Optional } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { ToolbarColor } from '../common/models/toolbar-color.model';
 import { TOOLBAR_COLOR } from '../common/tokens/toolbar-color.token';
 
 @Component({
@@ -10,10 +10,10 @@ import { TOOLBAR_COLOR } from '../common/tokens/toolbar-color.token';
   templateUrl: './main-layout.component.html',
 })
 export class MainLayoutComponent {
-  public readonly toolbarColor: ToolbarColor;
+  public readonly toolbarColor?: ThemePalette;
 
-  constructor(@Optional() @Inject(TOOLBAR_COLOR) toolbarColor: ToolbarColor) {
-    this.toolbarColor = toolbarColor || ToolbarColor.Primary;
+  constructor(@Optional() @Inject(TOOLBAR_COLOR) toolbarColor: ThemePalette) {
+    this.toolbarColor = toolbarColor;
   }
 }
 

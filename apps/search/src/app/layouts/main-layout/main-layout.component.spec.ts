@@ -46,22 +46,30 @@ describe('MainLayoutComponent', () => {
       expect(title).toBe('Google Books Search');
     });
 
-    it('should have primary as default color', async () => {
+    it('should have no color by default', async () => {
       await setup();
 
       const toolbar = getToolbar(fixture);
 
-      expect(toolbar.color).toBe('primary');
+      expect(toolbar.color).toBeUndefined();
     });
 
-    it('should have color set by provided token', async () => {
-      TestBed.overrideProvider(TOOLBAR_COLOR, { useValue: 'accent' });
-      await setup();
+    it.each`
+      color
+      ${'primary'}
+      ${'accent'}
+      ${'warn'}
+    `(
+      'should have "$color" as color when it is provided',
+      async ({ color }) => {
+        TestBed.overrideProvider(TOOLBAR_COLOR, { useValue: color });
+        await setup();
 
-      const toolbar = getToolbar(fixture);
+        const toolbar = getToolbar(fixture);
 
-      expect(toolbar.color).toBe('accent');
-    });
+        expect(toolbar.color).toBe(color);
+      }
+    );
   });
 
   describe('Content', () => {

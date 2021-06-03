@@ -1,4 +1,4 @@
 import { InjectionToken } from '@angular/core';
-import { ToolbarColor } from '../models/toolbar-color.model';
+import { ThemePalette } from '@angular/material/core';
 
-export const TOOLBAR_COLOR = new InjectionToken<ToolbarColor>('TOOLBAR_COLOR');
+export const TOOLBAR_COLOR = new InjectionToken<ThemePalette>('TOOLBAR_COLOR');
