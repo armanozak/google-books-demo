@@ -52,9 +52,15 @@
             "polyfills": "apps/search/src/polyfills.ts",
             "tsConfig": "apps/search/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/search/src/favicon.ico", "apps/search/src/assets"],
+            "assets": [
+              "apps/search/src/favicon.ico",
+              "apps/search/src/assets",
+              "apps/search/src/manifest.webmanifest"
+            ],
             "styles": ["apps/search/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "apps/search/ngsw-config.json"
           },
           "configurations": {
             "production": {
