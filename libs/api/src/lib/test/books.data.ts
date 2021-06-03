@@ -7,7 +7,7 @@ export const bookSearchResponse: BookSearchResponse = {
       volumeInfo: {
         title: '__title1__',
         authors: ['__author1_1__', '__author1_2__'],
-        publishedDate: '__publishedDate1__',
+        publishedDate: '2021',
         imageLinks: {
           thumbnail: '__thumbnail1__',
         },
@@ -36,7 +36,7 @@ export const bookSummaryResponse: BookSummaryResponse = {
       id: '__id1__',
       title: '__title1__',
       authors: ['__author1_1__', '__author1_2__'],
-      publishedDate: '__publishedDate1__',
+      publishedDate: '2021',
       thumbnail: '__thumbnail1__',
     },
     {
