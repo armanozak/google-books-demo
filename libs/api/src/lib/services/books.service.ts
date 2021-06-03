@@ -42,7 +42,7 @@ export class BooksService {
           maxResults,
           orderBy,
           fields:
-            'totalItems,items(volumeInfo/id,volumeInfo/title,volumeInfo/imageLinks/thumbnail,volumeInfo/authors,volumeInfo/publishedDate)',
+            'totalItems,items(id,volumeInfo/title,volumeInfo/imageLinks/thumbnail,volumeInfo/authors,volumeInfo/publishedDate)',
           langRestrict: 'en',
         },
       })
